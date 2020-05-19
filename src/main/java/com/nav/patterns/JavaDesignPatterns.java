@@ -10,12 +10,12 @@ import java.sql.Statement;
 public class JavaDesignPatterns {
 
     public static void main(String[] arg){
-        singletonPattern();
+        singletonPatternExample1();
     }
 
-    private static void singletonPattern() {
-        System.out.println("-----------------------");
+    private static void singletonPatternExample1() {
         System.out.println("---Singleton Pattern---");
+        System.out.println("------Example 1-------");
         DbSingleton instance1 = DbSingleton.getInstance();
         System.out.println("Instance 1: " + instance1);
         Connection conn = instance1.getConnection();
