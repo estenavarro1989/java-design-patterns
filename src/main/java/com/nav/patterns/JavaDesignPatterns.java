@@ -1,5 +1,6 @@
 package com.nav.patterns;
 
+import com.nav.patterns.creational.builder.LunchOrder;
 import com.nav.patterns.creational.singleton.DbSingleton;
 
 import java.sql.Connection;
@@ -11,6 +12,7 @@ public class JavaDesignPatterns {
 
     public static void main(String[] arg){
         singletonPatternExample1();
+        builderPatternExample1();
     }
 
     private static void singletonPatternExample1() {
@@ -48,4 +50,16 @@ public class JavaDesignPatterns {
         }
     }
 
+    private static void builderPatternExample1() {
+        System.out.println("---Builder Pattern---");
+        System.out.println("------Example 1-------");
+        LunchOrder.Builder builder = new LunchOrder.Builder();
+        builder.bread("Wheat").condiments("Lettuce").dressing("Mayo").meat("Turkey");
+        LunchOrder lunchOrder1 = builder.build();
+        System.out.println("LunchOrder1" + lunchOrder1);
+        builder = new LunchOrder.Builder();
+        builder.bread("Wheat").dressing("Mayo").meat("Turkey");
+        LunchOrder lunchOrder2 = builder.build();
+        System.out.println("LunchOrder2" + lunchOrder2);
+    }
 }
