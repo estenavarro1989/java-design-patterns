@@ -1,6 +1,9 @@
 package com.nav.patterns;
 
 import com.nav.patterns.creational.builder.LunchOrder;
+import com.nav.patterns.creational.factory.Website;
+import com.nav.patterns.creational.factory.WebsiteFactory;
+import com.nav.patterns.creational.factory.WebsiteType;
 import com.nav.patterns.creational.prototype.Movie;
 import com.nav.patterns.creational.prototype.Registry;
 import com.nav.patterns.creational.singleton.DbSingleton;
@@ -9,13 +12,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 
 public class JavaDesignPatterns {
 
     public static void main(String[] arg){
         singletonPatternExample1();
         builderPatternExample1();
-        protoypePatternExample1();
+        prototypePatternExample1();
+        factoryPatternExample1();
     }
 
     private static void singletonPatternExample1() {
@@ -66,8 +71,8 @@ public class JavaDesignPatterns {
         System.out.println("LunchOrder2" + lunchOrder2);
     }
 
-    private static void protoypePatternExample1() {
-        System.out.println("---Protoype Pattern---");
+    private static void prototypePatternExample1() {
+        System.out.println("---Prototype Pattern---");
         System.out.println("------Example 1-------");
 
         Registry registry = new Registry();
@@ -79,5 +84,14 @@ public class JavaDesignPatterns {
         anotherMovie.setTitle("Going of Four");
         System.out.println("Second Movie" + anotherMovie.toString());
 
+    }
+
+    private static void factoryPatternExample1() {
+        System.out.println("---Factory Pattern---");
+        System.out.println("------Example 1-------");
+        Website site = WebsiteFactory.getWebsite(WebsiteType.BLOG);
+        System.out.println("Site 1: " + site.getPages());
+        site = WebsiteFactory.getWebsite(WebsiteType.SHOP);
+        System.out.println("Site 2: " + site.getPages());
     }
 }
