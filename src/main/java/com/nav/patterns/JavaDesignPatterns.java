@@ -1,6 +1,8 @@
 package com.nav.patterns;
 
 import com.nav.patterns.creational.builder.LunchOrder;
+import com.nav.patterns.creational.prototype.Movie;
+import com.nav.patterns.creational.prototype.Registry;
 import com.nav.patterns.creational.singleton.DbSingleton;
 
 import java.sql.Connection;
@@ -13,6 +15,7 @@ public class JavaDesignPatterns {
     public static void main(String[] arg){
         singletonPatternExample1();
         builderPatternExample1();
+        protoypePatternExample1();
     }
 
     private static void singletonPatternExample1() {
@@ -61,5 +64,20 @@ public class JavaDesignPatterns {
         builder.bread("Wheat").dressing("Mayo").meat("Turkey");
         LunchOrder lunchOrder2 = builder.build();
         System.out.println("LunchOrder2" + lunchOrder2);
+    }
+
+    private static void protoypePatternExample1() {
+        System.out.println("---Protoype Pattern---");
+        System.out.println("------Example 1-------");
+
+        Registry registry = new Registry();
+        Movie movie = (Movie) registry.createItem("Movie");
+        movie.setTitle("Creational Patters in Java");
+        System.out.println("First Movie" + movie.toString());
+
+        Movie anotherMovie = (Movie) registry.createItem("Movie");
+        anotherMovie.setTitle("Going of Four");
+        System.out.println("Second Movie" + anotherMovie.toString());
+
     }
 }
